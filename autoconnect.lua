@@ -1,0 +1,5 @@
+station.start(
+	"SSID",
+	"PASSWORD"
+)
+
