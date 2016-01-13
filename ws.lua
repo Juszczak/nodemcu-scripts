@@ -61,20 +61,13 @@ function encode(payload, opcode)
 	return head .. payload
 end
 local function handshaken(socket)
-	print("--- connected ---")
 	node.output(function (message)
 		return socket.send(message, 1)
 	end, 1)
 
 	function socket.onmessage(payload, opcode)
-		print("--- opcode ---")
-		print(opcode)
 		if opcode == 1 then
-			print("--- payload ---")
-			print(payload)
-			if payload == "ping" then
-				socket.send("pong\0", 2)
-			end
+			node.input(payload)
 		elseif payload == 2 then
 		end
 	end
